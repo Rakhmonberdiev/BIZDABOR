@@ -15,6 +15,7 @@ namespace AuthAPI.Services
         public TokenService(IConfiguration conf, UserManager<AppUser> userManager)
         {
             _key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(conf["TokenKey"]));
+            _userManager = userManager;
         }
         public async Task<string> GetTokenAsync(AppUser user)
         {
