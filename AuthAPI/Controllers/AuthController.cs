@@ -16,10 +16,9 @@ namespace AuthAPI.Controllers
         private readonly UserManager<AppUser> _userManager;
         private readonly ITokenService _tokenService;
         private readonly IMapper _mapper;
-        public AuthController(UserManager<AppUser> userManager, ITokenService tokenService,IMapper mapper)
+        public AuthController(UserManager<AppUser> userManager,ITokenService tokenService,IMapper mapper)
         {
             _userManager = userManager;
- 
             _tokenService = tokenService;
             _mapper = mapper;
         }
@@ -58,7 +57,36 @@ namespace AuthAPI.Controllers
             }
 
         }
+                [HttpPost("login")]
+        public async Task<ActionResult<UserDto>> Login(LoginDto loginDto)
+        {
+            try
+            {
+                var user = await _userManager.Users.SingleOrDefaultAsync(x => x.UserName == loginDto.UserName);
+                if (user == null)
+                {
+                    return Unauthorized("Invalid username");
+                }
+                var result = await _userManager.CheckPasswordAsync(user, loginDto.Password);
+                if (!result)
+                {
+                    return Unauthorized("Invalid password");
+                }
+                var getToken = await _tokenService.GetTokenAsync(user);
 
+                return new UserDto
+                {
+                    UserName = user.UserName,
+                    Token = getToken
+                };
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex.Message);
+            }
+        }
+       
         private async Task<bool> UserExists(string username)
         {
             return await _userManager.Users.AnyAsync(x=>x.UserName == username.ToLower());
