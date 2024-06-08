@@ -9,6 +9,7 @@ namespace AuthAPI.Helpers
         public AutoMapperProfiles()
         {
             CreateMap<RegisterDto, AppUser>();
+            CreateMap<ClientDto, AppUser>();
         }
     }
 }

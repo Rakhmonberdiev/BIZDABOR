@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AuthAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/auth")]
     [ApiController]
     public class AuthController : ControllerBase
     {
@@ -57,7 +57,7 @@ namespace AuthAPI.Controllers
             }
 
         }
-                [HttpPost("login")]
+        [HttpPost("login")]
         public async Task<ActionResult<UserDto>> Login(LoginDto loginDto)
         {
             try
@@ -86,7 +86,6 @@ namespace AuthAPI.Controllers
                 return BadRequest(ex.Message);
             }
         }
-       
         private async Task<bool> UserExists(string username)
         {
             return await _userManager.Users.AnyAsync(x=>x.UserName == username.ToLower());
