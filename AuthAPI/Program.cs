@@ -1,8 +1,11 @@
 using AuthAPI.Data;
 using AuthAPI.Models;
 using AuthAPI.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 var connection = builder.Configuration.GetConnectionString("Auth");
@@ -22,6 +25,18 @@ builder.Services.AddIdentityCore<AppUser>(opt =>
     .AddRoleManager<RoleManager<IdentityRole>>()
     .AddEntityFrameworkStores<DataContext>();
 
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+      .AddJwtBearer(opt =>
+      {
+          opt.TokenValidationParameters = new TokenValidationParameters
+          {
+              ValidateIssuerSigningKey = true,
+              IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["TokenKey"])),
+              ValidateIssuer = false,
+              ValidateAudience = false
+          };
+      });
 builder.Services.AddAuthorization(opt =>
 {
     opt.AddPolicy("AdminRole", policy => policy.RequireRole("Admin"));
