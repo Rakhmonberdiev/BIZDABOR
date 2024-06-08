@@ -1,5 +1,6 @@
 using AuthAPI.Data;
 using AuthAPI.Models;
+using AuthAPI.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -25,6 +26,8 @@ builder.Services.AddIdentityCore<AppUser>(opt =>
 ///automapper
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
+//tokenService
+builder.Services.AddScoped<ITokenService, TokenService>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

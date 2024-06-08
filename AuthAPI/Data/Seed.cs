@@ -16,7 +16,8 @@ namespace AuthAPI.Data
             var roles = new List<IdentityRole>
             {
                 new IdentityRole{Name="Admin"},
-                new IdentityRole{Name="Client"}
+                new IdentityRole{Name="Client"},
+                new IdentityRole{Name="User"}
             };
             foreach (var role in roles)
             {
