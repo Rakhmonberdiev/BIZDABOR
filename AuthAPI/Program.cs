@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 var connection = builder.Configuration.GetConnectionString("Auth");
-
+///database connection
 builder.Services.AddDbContext<DataContext>(opt =>
 {
     opt.UseNpgsql(connection);
@@ -21,6 +21,9 @@ builder.Services.AddIdentityCore<AppUser>(opt =>
     .AddRoleManager<RoleManager<IdentityRole>>()
     .AddEntityFrameworkStores<DataContext>();
 
+
+///automapper
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 
 builder.Services.AddControllers();
