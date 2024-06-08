@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductAPI", "ProductAPI\Pr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CategoryAPI", "CategoryAPI\CategoryAPI.csproj", "{D3C07A60-FA35-4A46-80E0-C0D1F697C256}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthAPI", "AuthAPI\AuthAPI.csproj", "{96D6FFC3-C725-4BE3-85DF-72323D500CBD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{D3C07A60-FA35-4A46-80E0-C0D1F697C256}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D3C07A60-FA35-4A46-80E0-C0D1F697C256}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D3C07A60-FA35-4A46-80E0-C0D1F697C256}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96D6FFC3-C725-4BE3-85DF-72323D500CBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96D6FFC3-C725-4BE3-85DF-72323D500CBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96D6FFC3-C725-4BE3-85DF-72323D500CBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96D6FFC3-C725-4BE3-85DF-72323D500CBD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
