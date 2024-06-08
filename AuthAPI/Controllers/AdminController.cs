@@ -2,6 +2,7 @@
 using AuthAPI.Models;
 using AuthAPI.Services;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -9,9 +10,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AuthAPI.Controllers
 {
-    [Route("api/admin")]
-    [ApiController]
-    public class AdminController : ControllerBase
+    [Authorize(Policy = "AdminRole")]
+    public class AdminController : BaseApiController
     {
         private readonly UserManager<AppUser> _userManager;
         private readonly IMapper _mapper;

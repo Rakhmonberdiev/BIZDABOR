@@ -9,9 +9,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AuthAPI.Controllers
 {
-    [Route("api/auth")]
-    [ApiController]
-    public class AuthController : ControllerBase
+
+    public class AuthController : BaseApiController
     {
         private readonly UserManager<AppUser> _userManager;
         private readonly ITokenService _tokenService;

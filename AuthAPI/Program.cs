@@ -22,6 +22,10 @@ builder.Services.AddIdentityCore<AppUser>(opt =>
     .AddRoleManager<RoleManager<IdentityRole>>()
     .AddEntityFrameworkStores<DataContext>();
 
+builder.Services.AddAuthorization(opt =>
+{
+    opt.AddPolicy("AdminRole", policy => policy.RequireRole("Admin"));
+});
 
 ///automapper
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
