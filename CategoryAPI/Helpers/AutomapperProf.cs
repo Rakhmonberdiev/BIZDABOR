@@ -9,6 +9,7 @@ namespace CategoryAPI.Helpers
         public AutomapperProf()
         {
             CreateMap<Category, CategoryDto>();
+            CreateMap<CategoryCreateUpdateDto, Category>();
         }
     }
 }

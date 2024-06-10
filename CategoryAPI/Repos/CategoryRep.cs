@@ -23,6 +23,11 @@ namespace CategoryAPI.Repos
             await _db.SaveChangesAsync();
         }
 
+        public async Task<bool> ExistingCategory(string title)
+        {
+            return await _db.Categories.AnyAsync(x => x.Title == title);
+        }
+
         public async Task<IEnumerable<Category>> GetAllCategories()
         {
             return await _db.Categories.OrderBy(c => c.Title).ToListAsync();

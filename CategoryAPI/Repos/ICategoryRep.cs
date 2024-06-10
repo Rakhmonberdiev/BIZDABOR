@@ -9,6 +9,6 @@ namespace CategoryAPI.Repos
         Task Create(Category model);
         Task Update(Category model);
         Task Delete(Category model);
-
+        Task<bool> ExistingCategory(string title);
     }
 }
