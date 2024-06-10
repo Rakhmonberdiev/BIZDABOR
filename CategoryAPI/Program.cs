@@ -1,5 +1,6 @@
 using CategoryAPI.Data;
 using CategoryAPI.Data.Seed;
+using CategoryAPI.Repos;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,6 +10,9 @@ builder.Services.AddDbContext<CategoryDb>(opt =>
 {
     opt.UseNpgsql(builder.Configuration.GetConnectionString("CategoryDb"));
 });
+
+builder.Services.AddScoped<ICategoryRep, CategoryRep>();
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 
 builder.Services.AddControllers();
