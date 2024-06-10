@@ -1,0 +1,26 @@
+[
+  {
+    "Id": "f6491e1b-3abf-4bf3-8e0c-8e8c1f8e6a2d",
+    "Title": "Радиатор"
+  },
+  {
+    "Id": "c9d278e1-0e5f-4e9b-af85-7a7b1c15a6c4",
+    "Title": "Амортизаторы"
+  },
+  {
+    "Id": "87e3f2c6-6a2c-4d0b-bd75-6b7d8e2a8c1f",
+    "Title": "Стартер"
+  },
+  {
+    "Id": "3d1e4e9a-8c7b-4b3a-9fbf-e1b2c3d4f5a6",
+    "Title": "Аккумулятор"
+  },
+  {
+    "Id": "9b7a8c6d-4f5e-2d3c-1b0a-efcdabcdabcd",
+    "Title": "Масляный фильтр"
+  },
+  {
+    "Id": "1b2c3d4e-5f6a-7b8c-9d0e-a1b2c3d4e5f6",
+    "Title": "Тормозные колодки"
+  }
+]
