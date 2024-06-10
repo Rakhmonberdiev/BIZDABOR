@@ -1,6 +1,14 @@
+using CategoryAPI.Data;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddDbContext<CategoryDb>(opt =>
+{
+    opt.UseNpgsql(builder.Configuration.GetConnectionString("CategoryDb"));
+});
+
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
