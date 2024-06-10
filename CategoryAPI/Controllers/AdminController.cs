@@ -39,6 +39,46 @@ namespace CategoryAPI.Controllers
                 return BadRequest(ex.Message);
             }
         }
+        [HttpPut("edit/{id}")]
+        public async Task<ActionResult> Update(Guid id,CategoryCreateUpdateDto dto)
+        {
+            try
+            {
+                var model = await _rep.GetCategoryById(id);
+                if (model != null)
+                {
+                    var existingCategory = await _rep.ExistingCategory(dto.Title);
+                    if (existingCategory) return BadRequest("A category with this name already exists.");
+                    var modelToRepo = _mapper.Map(dto, model);
+                    await _rep.Update(modelToRepo);
+                    return Ok();
+                }
+                return BadRequest();
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex.Message);
+            }
+        }
+        [HttpDelete("delete/{id}")]
+        public async Task<ActionResult> Delete(Guid id)
+        {
+            try
+            {
+                var model = await _rep.GetCategoryById(id);
+                if (model != null)
+                {
+                    await _rep.Delete(model);
+                    return Ok();
+                }
+                return NotFound();
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
 
     }
 }
